@@ -2,20 +2,10 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/initialize.php';
+
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
-
-// セッション開始
-ob_start();
-session_start();
-
-// email送信用に、テンプレートエンジンを使う
-require_once __DIR__ . '/../vendor/autoload.php';
-$loader = new FilesystemLoader(__DIR__ . '/../views');
-$twig = new Environment($loader);
-
-// タイムゾーン
-date_default_timezone_set('Asia/Tokyo');
 
 // 入力を受け取る
 // [TODO fin] POSTからname/email/quantityを受け取る
