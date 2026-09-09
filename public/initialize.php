@@ -1,5 +1,7 @@
 <?php
 
+define('BASEPASS', realpath(__DIR__ . '/../'));
+
 // タイムゾーン
 date_default_timezone_set('Asia/Tokyo');
 
@@ -24,11 +26,12 @@ $twig = new Environment($loader, [
 ]);
 
 //DB接続取得
-function getDbh(): PDO {
+function getDbh(): PDO
+{
     static $dbh = null;
 
-    if ($dbh === null){
-            // DBハンドルの取得
+    if ($dbh === null) {
+        // DBハンドルの取得
         $config = require __DIR__ . '/../config.php';
         $db_config = $config['db'];
         $dsn = "mysql:dbname={$db_config['database']};host={$db_config['host']};port={$db_config['port']};charset={$db_config['charset']}";
@@ -51,8 +54,8 @@ function getDbh(): PDO {
     }
 
 
-// var_dump($dbh);
-// exit;
+    // var_dump($dbh);
+    // exit;
 
-return $dbh;
+    return $dbh;
 }
