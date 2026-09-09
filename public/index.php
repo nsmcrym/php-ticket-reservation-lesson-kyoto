@@ -10,9 +10,12 @@ $input = $_SESSION['input'] ?? [];
 $errord = $_SESSION['errord'] ?? [];
 // セッションの内容をクリア
 unset($_SESSION['input'], $_SESSION['errord']);
+$eventObj = getEventInstance();
 
+// var_dump($eventObj->eventTitle());
 // 表示
 echo $twig->render('index.twig', [
     'input' => $input,
     'errord' => $errord,
+    'title' => $eventObj->eventTitle(),
 ]);
